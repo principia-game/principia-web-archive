@@ -1,0 +1,424 @@
+
+$grid: #bbb;
+$link: #00f;
+$link_active: darken($link, 17%);
+$bg: #f0f0f0;
+$bg_box: #eee;
+$bg_box2: #fff;
+$btn_play: #9ec59e;
+$btn_edit: #a3a3ca;
+$btn_text: #202020;
+
+body {
+	background-color: $bg;
+	font-family: "Roboto", "Arial", sans-serif;
+	font-size: 11.75pt;
+	margin: 0;
+
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+a {
+	color: $link;
+	text-decoration: none;
+
+	&:hover { text-decoration: underline; }
+	&:active { color: $link_active; }
+}
+
+p {
+	line-height: 1.6;
+}
+
+ul li, ol li {
+	margin-top: 0.7em;
+	margin-bottom: 0.7em;
+}
+
+h1 { font-size: 1.75em; }
+h2 { font-size: 1.50em; }
+h3 { font-size: 1.17em; }
+h4 { font-size: 1.00em; }
+h5 { font-size: 0.83em; }
+h6 { font-size: 0.67em; }
+
+.banner {
+	padding: 10px;
+	font-weight: bold;
+
+	&.b-red {
+		background-color: #9c0d0d;
+		color: white;
+	}
+
+	&.b-green {
+		background-color: #0d9c0d;
+		color: white;
+	}
+}
+
+.top, .footer {
+	background-color: $bg_box;
+	margin-top: 0px;
+	overflow: hidden;
+	padding: 10px 8px;
+}
+
+.top {
+	padding-top: 10px;
+	border-bottom: 1px solid $grid;
+}
+
+.content {
+	flex: 1;
+}
+
+.container {
+	max-width: 1080px;
+	margin: auto;
+	padding: 0 7px;
+}
+
+.footer {
+	text-align: center;
+	line-height: 1.5;
+	padding-top: 15px;
+	padding-bottom: 35px;
+	border-top: 1px solid $grid;
+}
+
+.picon {
+	margin-right: 10px;
+	vertical-align: bottom;
+
+	img {
+		width: 32px;
+		height: 32px;
+	}
+}
+
+.menucontainer {
+	margin: auto;
+	max-width: 1280px;
+}
+
+div.menu {
+	display: inline;
+	line-height: 40px;
+	text-align: center;
+	font-weight: bold;
+
+	a {
+		display: inline-block;
+		color: #222;
+		font-size: 1.1em;
+		font-weight: bold;
+		text-decoration: none;
+		padding: 0px 10px;
+		border-radius: 5px;
+		margin: 0px 1px;
+
+		&:hover {
+			background-color: $bg_box2;
+		}
+	}
+
+	&.right a, .notifs {
+		float: right;
+		margin-right: 6px;
+	}
+	.notifs {
+		color: #20aa20;
+	}
+
+	img.search {
+		vertical-align: middle;
+		width: 18px;
+		height: 18px;
+	}
+}
+
+.header a {
+	float: right;
+}
+
+.header_message {
+	border-bottom: 1px solid $grid;
+	padding: 15px;
+}
+
+.level-list {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	gap: 15px 5px;
+
+	@media screen and (max-width: 1000px) {
+		&.scrollable {
+			flex-flow: row nowrap;
+			justify-content: unset;
+			overflow-x: scroll;
+			padding-bottom: 15px;
+		}
+	}
+}
+
+div.level {
+	background-color: $bg_box2;
+	display: inline-block;
+	position: relative;
+	width: 230px;
+	height: 200px;
+	padding: 3px;
+	vertical-align: top;
+
+	border: 1px solid #444;
+	border-radius: 4px;
+
+	.lvlbox_top {
+		color: black;
+		font-size: 14pt;
+		text-decoration: none;
+		overflow: hidden;
+		max-height: 230px;
+
+		span.featured {
+			position: absolute;
+			top: 4px;
+			right: 4px;
+			color: #ffffee;
+			background-color: rgba(1, 0, 1, 0.5);
+		}
+
+		img {
+			width: 230px;
+			height: 125px;
+			border-radius: 4px 4px 0px 0px;
+		}
+	}
+	.user {
+		position: absolute;
+		top: 183px;
+		text-decoration: none;
+		margin-left: 2px;
+	}
+	.likes {
+		float: right;
+		text-align: right;
+	}
+
+	&:hover {
+		background-color: #eee;
+	}
+}
+
+
+// Buttons for the Latest Levels page \\
+.latest-buttons {
+	margin-bottom: 15px;
+}
+.latest-buttons a {
+	background-color: $btn_play;
+	border: none;
+	color: $btn_text;
+	display: inline-block;
+	font-weight: bold;
+	margin-right: 0.5em;
+	padding: 10px 20px;
+
+	&:hover {
+		background-color: lighten($btn_play, 15%);
+		text-decoration: none;
+	}
+
+	&.sel {
+		background-color: $btn_edit;
+
+		&:hover {
+			background-color: lighten($btn_edit, 15%);
+		}
+	}
+}
+
+.user {
+	font-weight: bold;
+
+	&, &:hover, &:active {
+		text-decoration: none;
+	}
+
+	.t_user { color: #0000aa; }
+}
+
+.lvl-box {
+	margin-top: 1em;
+	min-height: 280px;
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+
+	.img {
+		position: relative;
+		width: 48%;
+		img {
+			width: 100%;
+		}
+
+		.revision {
+			background-color: rgba(200, 255, 200, 0.5);
+			color: #000;
+			font-size: 0.8em;
+			font-weight: bold;
+			padding: 4px;
+			position: absolute;
+			top: 0%;
+			left: 0%;
+		}
+	}
+
+	.info {
+		width: 48%;
+		padding: 1em;
+		background-color: #fafafa;
+
+		// Play & Edit buttons \\
+		.play {
+			background-color: $btn_play;
+			border: none;
+			color: $btn_text;
+			display: inline-block;
+			font-weight: bold;
+			margin-right: 0.5em;
+			padding: 10px 20px;
+
+			&:hover {
+				background-color: lighten($btn_play, 15%);
+				text-decoration: none;
+			}
+		}
+
+		.play-edit {
+			background-color: $btn_edit;
+
+			&:hover {
+				background-color: lighten($btn_edit, 15%);
+			}
+		}
+
+		.likemsg {
+			display: inline-block;
+			margin-right: 1em;
+		}
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.lvl-box {
+		flex-flow: row-reverse wrap;
+		gap: 10px 0px;
+
+		.img, .info {
+			width: 100%;
+		}
+		.info {
+			margin-bottom: 20px;
+		}
+	}
+}
+
+.lvl-data {
+	background-color: $bg_box2;
+	padding: 0.5em;
+
+	p {
+		margin: 0;
+		padding: 0.5em 1em;
+	}
+}
+
+// Pagination \\
+.pagination {
+	margin-top: 1em;
+	font-size: 14pt;
+	font-weight: bold;
+
+	&:before {
+		content: "Pages: ";
+	}
+
+	span {
+		margin-left: 13px;
+		display: inline-block;
+	}
+}
+
+// Settings \\
+
+.settings {
+	width: 100%;
+	border-collapse: collapse;
+
+	.a {
+		text-align: center;
+		width: 200px;
+	}
+
+	td, th {
+		border-bottom: 1px solid $grid;
+		padding: 10px 5px;
+	}
+
+	tr th {
+		background-color: #fafafa;
+		font-size: 12pt;
+	}
+
+	tr {
+		&:nth-child(odd)  { background-color: #f5f5f5; }
+		&:nth-child(even) { background-color: #e8e8e8; }
+	}
+
+	.fotnot {
+		margin-top: 8px;
+		font-size: 10.5pt;
+	}
+}
+
+/// Generic classes \\\
+
+.left	{ text-align: left; }
+.center	{ text-align: center; }
+.right	{ text-align: right; }
+
+.clear_right { clear: right; }
+.float-right { float: right; }
+
+.noborder { border: 0; }
+
+.text-for-ants { font-size: 8pt; }
+
+.error {
+	color: red;
+	font-weight: bold;
+}
+
+
+/// User page \\\
+.user_about {
+	margin-bottom: 1.5em;
+}
+
+
+/// Archive specific \\\
+
+.archive-head {
+	border-bottom: 1px solid #333;
+	display: block;
+	text-align: center;
+	font-size: 1em;
+	margin: 30px 0px;
+}

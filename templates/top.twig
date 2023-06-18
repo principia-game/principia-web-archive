@@ -1,0 +1,19 @@
+{% extends "_layout.twig" %}
+
+{% set title = "Top rated levels" %}
+{% set description = "View the most liked levels on principia-web." %}
+
+	{% block content %}
+<h1>Top rated levels</h1>
+<p><em>These are the top{% if levels|length >= glob_lpp %} {{ glob_lpp }}{% endif %} rated levels of all time.</em></p>
+
+<div class="level-list">
+{% for level in levels %}
+	{{ level(level) }}
+{% else %}
+	There are no levels. You could create one!
+{% endfor %}
+</div>
+
+<br><br>
+	{% endblock %}

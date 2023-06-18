@@ -1,0 +1,131 @@
+// Include normal styling, so only one stylesheet file needs to be loaded.
+@import "style";
+
+$grid: #444;
+$link: #ff0;
+$link_active: darken($link, 17%);
+$bg: #0F0F0F;
+$bg_box: #191919;
+$bg_box2: #060606;
+$btn_play: #608060;
+$btn_edit: #636383;
+$btn_text: #eee;
+
+body {
+	background-color: $bg;
+	color: white;
+}
+
+a {
+	color: $link;
+
+	&:active { color: $link_active; }
+}
+
+.top, .footer {
+	background-color: $bg_box;
+}
+
+.top { border-bottom: 1px solid $grid; }
+
+.footer { border-top: 1px solid $grid; }
+
+div.menu {
+	a {
+		color: #ddd;
+
+		&:hover {
+			background-color: $bg_box2;
+		}
+	}
+}
+
+.header_message, .skit {
+	border-bottom: 1px solid $grid;
+}
+
+div.level {
+	background-color: $bg_box2;
+
+	.lvlbox_top {
+		color: white;
+	}
+
+	&:hover {
+		background-color: #111;
+	}
+}
+
+.latest-buttons a {
+	background-color: $btn_play;
+	color: $btn_text;
+
+	&:hover {
+		background-color: darken($btn_play, 10%);
+	}
+
+	&.sel {
+		background-color: $btn_edit;
+
+		&:hover {
+			background-color: darken($btn_edit, 10%);
+		}
+	}
+}
+
+.user {
+	.t_user { color: #6da0fd; }
+	.t_moderator { color: #23e123; }
+	.t_admin { color: #ff4646; }
+}
+
+.lvl-box {
+	.info {
+		background-color: #050505;
+
+		.play {
+			background-color: #608060;
+			color: #eee;
+
+			&:hover {
+				background-color: darken(#608060, 10%);
+			}
+		}
+
+		.play-edit {
+			background-color: #636383;
+
+			&:hover {
+				background-color: darken(#636383, 10%);
+			}
+		}
+	}
+}
+
+.lvl-data {
+	background-color: $bg_box2;
+}
+
+.settings {
+	td, th {
+		border-bottom: 1px solid $grid;
+	}
+
+	tr th {
+		background-color: #080808;
+	}
+
+	tr {
+		&:nth-child(odd)  { background-color: #0c0c0c; }
+		&:nth-child(even) { background-color: #171717; }
+	}
+}
+
+/// Generic form element overrides \\\
+
+textarea, input[type=text], input[type=password], input[type=email], input[type=color], input[type=file], .jscolor {
+	background-color: #111;
+	border: 1px solid $grid;
+	color: white;
+	padding: 5px;
+}

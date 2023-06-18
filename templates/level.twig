@@ -1,0 +1,61 @@
+{% extends "_layout.twig" %}
+
+{% set title = level.title %}
+{% set description = level.description %}
+{% set image = domain ~ "/levels/thumbs/" ~ lid ~ ".jpg" %}
+{% set pagename = "/level/" ~ lid %}
+
+	{% block content %}
+<h1>{{ level.title }}</h1>
+
+<span class="misc">
+	  {{ userlink(level, 'u_') }}
+	- {{ level.cat | cat_to_type | title }} level
+	- {{ level.time | date('M j, Y') }} from {{ level.platform }}</span>
+
+<div class="lvl-box">
+	<div class="img">
+		{% if level.revision > 1 %}
+			<span class="revision">Revision #{{ level.revision }}, updated {{ level.time | date('M j, Y') }}</span>
+		{% endif %}
+		{% if not level.visibility == 1 %}
+			<a href="/thumbs/{{ level.id }}-0-0.jpg"><img src="/thumbs/{{ level.id }}-0-0.jpg" alt=""></a>
+		{% else %}
+			<img src="/assets/locked_thumb.svg" alt="Locked level">
+		{% endif %}
+	</div>
+
+	<div class="info">
+		{% if not level.visibility == 1 %}
+			<div id="buttons">
+				<a class="play" href="principia://play/lvl/db/{{ lid }}">Play</a>
+				<a class="play play-edit" href="principia://sandbox/db/{{ lid }}">Edit</a>
+
+				{% if level.likes > 0 %}
+					<span class="likemsg">{{ level.likes }} players liked this.</span>
+				{% endif %}
+			</div>
+		{% else %}
+			<p><em>This level has been locked. It will not be visible outside of this level page.</em></p>
+		{% endif %}
+		<p>{{ level.description | markdown }}</p>
+	</div>
+</div>
+
+<div class="lvl-data">
+	<p>Level ID: {{ level.id }}</p>
+</div>
+
+{% if derivatives %}
+	<h2>Derivatives</h2>
+	{% for derivative in derivatives %}
+		{{ level(derivative) }}
+	{% endfor %}
+{% endif %}
+
+{% if parentlevel %}
+	<h2>Parent</h2>
+	{{ level(parentlevel) }}
+{% endif %}
+
+	{% endblock %}

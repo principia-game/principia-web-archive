@@ -1,0 +1,16 @@
+## User-generated files
+conf/config.php
+levels/
+thumbs/
+templates/cache/
+
+## SCSS caches
+assets/css/
+assets/scss/.sass-cache
+
+## Featured stuff
+featured/
+
+## Composer
+vendor/
+composer.lock
