@@ -42,7 +42,7 @@ function error($title, $message) {
 
 function level($level, $featured = '') {
 	if (!isset($level['visibility']) || $level['visibility'] != 1)
-		$img = "thumbs/".$level['id']."-0-0.jpg";
+		$img = "thumbs/low/".$level['id']."-0-0.jpg";
 	else
 		$img = "assets/locked_thumb.svg";
 
