@@ -17,13 +17,12 @@
 {% for level in levels %}
 	{{ level(level) }}
 {% else %}
-	This user hasn't uploaded any levels yet!
+	This user hasn't uploaded any levels.
 {% endfor %}
 </div>
 
 {% set le_url = '/user/' ~ id ~ '?page=%s' %}
 {{ pagination(level_count, glob_lpp, le_url, page) }}
 
-<br>
-
+<br><br>
 	{% endblock %}

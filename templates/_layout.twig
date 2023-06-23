@@ -40,7 +40,7 @@
 	<div class="footer">
 		{% for url, title in footerlinks %}{% if not loop.first %}&ndash;{% endif %} <a href="{{ url }}">{{ title }}</a> {% endfor %}
 
-		<br>{{ custom_info() }}
+		<br><br>{{ custom_info() }}
 		Running principia-web-archive
 		{{ profiler_stats() }}
 	</div>

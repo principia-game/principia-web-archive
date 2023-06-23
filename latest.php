@@ -11,7 +11,7 @@ $count = result("SELECT COUNT(*) FROM levels l $where");
 
 echo twigloader()->render('latest.twig', [
 	'type' => $type,
-	'levels' => fetchArray($levels),
+	'levels' => $levels,
 	'page' => $page,
 	'level_count' => $count
 ]);

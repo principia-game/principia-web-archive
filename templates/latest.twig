@@ -1,17 +1,17 @@
 {% extends "_layout.twig" %}
 
 {% if page == 1 %}
-	{% set title = "Latest levels" %}
+	{% set title = "Browse levels" %}
 {% else %}
-	{% set title = "Latest levels (Page " ~ page ~ ")" %}
+	{% set title = "Browse levels (Page " ~ page ~ ")" %}
 {% endif %}
-{% set description = "View the latest levels uploaded to principia-web." %}
+{% set description = "Browse all the levels that were ever uploaded to the official Principia community site." %}
 {% if type != 'all' %}
 	{% set pagename = '/latest/' ~ type %}
 {% endif %}
 
 	{% block content %}
-<h1>Latest levels {% if page != 1 %}(Page {{ page }}){% endif %}</h1>
+<h1>Latest levels{% if page != 1 %} (Page {{ page }}){% endif %}</h1>
 <div class="latest-buttons">
 	<a{% if type == 'custom' %} class="sel"{% endif %} href="/latest/custom">Custom</a>
 	<a{% if type == 'adventure' %} class="sel"{% endif %} href="/latest/adventure">Adventure</a>
@@ -22,8 +22,6 @@
 <div class="level-list">
 {% for level in levels %}
 	{{ level(level) }}
-{% else %}
-	There are no {% if type != 'all' %}{{ type }}{% endif %} levels. You could create one!
 {% endfor %}
 </div>
 

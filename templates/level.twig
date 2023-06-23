@@ -40,7 +40,7 @@
 				{% endif %}
 			</div>
 		{% endif %}
-		<p>{{ level.description | markdown }}</p>
+		<p>{{ level.description | replace({'&gt;': '>', '&lt;': '<'}) | nl2br }}</p>
 	</div>
 </div>
 

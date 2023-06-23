@@ -16,3 +16,4 @@ vendor/
 composer.lock
 tools/leveldata.json
 tools/userdata.json
+data
