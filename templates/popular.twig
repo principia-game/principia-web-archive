@@ -10,10 +10,10 @@
 <div class="level-list">
 {% for level in levels %}
 	{{ level(level) }}
-{% else %}
-	There are no levels. You could create one!
 {% endfor %}
 </div>
+
+{{ pagination(level_count, glob_lpp, "/popular?page=%s", page) }}
 
 <br><br>
 	{% endblock %}
