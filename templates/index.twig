@@ -31,7 +31,16 @@
 {% endfor %}
 </div>
 
-<h2 class="header">Latest custom levels <a href="/latest/custom">More</a></h2>
+<h2 class="header">Random picks <a href="/random">More</a></h2>
+<div class="level-list scrollable">
+{% for random_level in random_levels %}
+	{{ level(random_level) }}
+{% else %}
+	There are no levels. At all.
+{% endfor %}
+</div>
+
+<h2 class="header">Custom levels <a href="/latest/custom">More</a></h2>
 <div class="level-list scrollable">
 {% for custom_level in custom_levels %}
 	{{ level(custom_level) }}
@@ -40,7 +49,7 @@
 {% endfor %}
 </div>
 
-<h2 class="header">Latest adventures <a href="/latest/adventure">More</a></h2>
+<h2 class="header">Adventure levels <a href="/latest/adventure">More</a></h2>
 <div class="level-list scrollable">
 {% for adventure_level in adventure_levels %}
 	{{ level(adventure_level) }}

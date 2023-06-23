@@ -16,3 +16,13 @@ function cat_to_type($cat) {
 		3 => 'puzzle'
 	};
 }
+
+function randomLevels($amount) {
+	global $publicLevels, $userfields;
+
+	$levelIds = [];
+	for ($i = 0; $i < $amount; $i++)
+		$levelIds[] = $publicLevels[array_rand($publicLevels)];
+
+	return query("SELECT $userfields l.id id, l.title title FROM levels l JOIN users u ON l.author = u.id WHERE l.id IN (".implode(",", $levelIds).")");
+}
