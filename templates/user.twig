@@ -7,10 +7,9 @@
 	{% block content %}
 <h1>{{ name }}</h1>
 
-<div class="user_about">
-	<h3>About this user</h3>
-	{{ userpagedata.about | default("*This user hasn't written anything about themselves yet...*") | markdown }}
-</div>
+{% if name == "zardOz" %}
+	<p>R.I.P. zardOz...</p>
+{% endif %}
 
 <h2>Levels</h2>
 

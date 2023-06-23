@@ -5,13 +5,11 @@
 
 	{% block content %}
 <h1>Top rated levels</h1>
-<p><em>These are the top{% if levels|length >= glob_lpp %} {{ glob_lpp }}{% endif %} rated levels of all time.</em></p>
+<p>These are the top rated levels of all time, which have the most likes.</p>
 
 <div class="level-list">
 {% for level in levels %}
 	{{ level(level) }}
-{% else %}
-	There are no levels. You could create one!
 {% endfor %}
 </div>
 

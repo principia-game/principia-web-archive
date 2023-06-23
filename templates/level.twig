@@ -18,15 +18,19 @@
 		{% if level.revision > 1 %}
 			<span class="revision">Revision #{{ level.revision }}, updated {{ level.time | date('M j, Y') }}</span>
 		{% endif %}
-		{% if not level.visibility == 1 %}
-			<a href="/thumbs/{{ level.id }}-0-0.jpg"><img src="/thumbs/{{ level.id }}-0-0.jpg" alt=""></a>
-		{% else %}
+		{% if level.visibility == 1 %}
 			<img src="/assets/locked_thumb.svg" alt="Locked level">
+		{% else %}
+			<a href="/thumbs/{{ level.id }}-0-0.jpg"><img src="/thumbs/{{ level.id }}-0-0.jpg" alt=""></a>
 		{% endif %}
 	</div>
 
 	<div class="info">
-		{% if not level.visibility == 1 %}
+		{% if level.visibility == 1 %}
+			<p><em>This level has been locked. It will not be visible outside of this level page.</em></p>
+		{% elseif level.visibility == 2 %}
+			<p><em>This level is unlisted. It will not be visible outside of this level page.</em></p>
+		{% else %}
 			<div id="buttons">
 				<a class="play" href="principia://play/lvl/db/{{ lid }}">Play</a>
 				<a class="play play-edit" href="principia://sandbox/db/{{ lid }}">Edit</a>
@@ -35,8 +39,6 @@
 					<span class="likemsg">{{ level.likes }} players liked this.</span>
 				{% endif %}
 			</div>
-		{% else %}
-			<p><em>This level has been locked. It will not be visible outside of this level page.</em></p>
 		{% endif %}
 		<p>{{ level.description | markdown }}</p>
 	</div>
@@ -51,11 +53,13 @@
 	{% for derivative in derivatives %}
 		{{ level(derivative) }}
 	{% endfor %}
+	<br><br>
 {% endif %}
 
 {% if parentlevel %}
 	<h2>Parent</h2>
 	{{ level(parentlevel) }}
+	<br><br>
 {% endif %}
 
 	{% endblock %}

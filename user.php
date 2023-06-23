@@ -6,6 +6,8 @@ if (isset($_GET['id']))
 else if (isset($_GET['name']))
 	$userpagedata = fetch("SELECT * FROM users WHERE name = ?", [$_GET['name']]);
 
+if (isset($_GET['id']) && $_GET['id'] < 13797 && !$userpagedata) error('404', "Users that hadn't uploaded a level has been excluded from the archive.");
+
 if (!isset($userpagedata) || !$userpagedata) error('404', "No user specified.");
 
 $id = $userpagedata['id'];
