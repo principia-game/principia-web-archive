@@ -11,7 +11,7 @@ require('../principia-web/vendor/autoload.php');
 foreach (glob("lib/*.php") as $file)
 	require_once($file);
 
-if (!str_contains($_SERVER['SCRIPT_NAME'], 'internal')) {
+if (!str_contains($_SERVER['SCRIPT_NAME'], 'internal') && php_sapi_name() != "cli") {
 	// Security headers.
 	header("Content-Security-Policy:"
 		."default-src 'self';"

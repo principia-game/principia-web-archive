@@ -10,7 +10,7 @@ $tplNoCache = false; // **DO NOT SET AS TRUE IN PROD - DEV ONLY**
 $lpp = 20;
 
 // Website domain.
-$domain = 'https://example.org';
+$domain = 'example.org';
 
 // Stub function to put special information in the footer.
 function customInfo() { }
