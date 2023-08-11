@@ -1,31 +1,25 @@
 <?php
 if (!file_exists('conf/config.php'))
-	die('Please read the installing instructions in the README file.');
+	die('Please install.');
 
 // load profiler first
-require_once('lib/profiler.php');
+class Profiler {
+	private $starttime;
+
+	function __construct() {
+		$this->starttime = microtime(true);
+	}
+
+	function getStats() {
+		printf("Rendered in %1.3fs with %dKB memory used", microtime(true) - $this->starttime, memory_get_usage(false) / 1024);
+	}
+}
 $profiler = new Profiler();
 
 require_once('conf/config.php');
 require('../principia-web/vendor/autoload.php');
 foreach (glob("lib/*.php") as $file)
 	require_once($file);
-
-if (!str_contains($_SERVER['SCRIPT_NAME'], 'internal') && php_sapi_name() != "cli") {
-	// Security headers.
-	header("Content-Security-Policy:"
-		."default-src 'self';"
-		."script-src 'self' 'unsafe-inline';"
-		."img-src 'self' data: *.voxelmanip.se voxelmanip.se *.imgur.com imgur.com *.github.com github.com *.githubusercontent.com;"
-		."media-src 'self' *.voxelmanip.se voxelmanip.se;"
-		."frame-src *.youtube-nocookie.com;"
-		."style-src 'self' 'unsafe-inline';");
-
-	header("Referrer-Policy: strict-origin-when-cross-origin");
-	header("X-Content-Type-Options: nosniff");
-	header("X-Frame-Options: SAMEORIGIN");
-	header("X-Xss-Protection: 1; mode=block");
-}
 
 $userfields = userfields();
 
@@ -35,7 +29,7 @@ if (php_sapi_name() != "cli") {
 	$uri = $_SERVER['REQUEST_URI'] ?? null;
 
 	// Redirect all non-internal pages to https if https is enabled.
-	if (!isset($_SERVER['HTTPS']) && !isset($_COOKIE['force-http'])) {
+	if (!isset($_SERVER['HTTPS'])) {
 		header("Location: https://".$_SERVER["HTTP_HOST"].$uri, true, 301);
 		die();
 	}

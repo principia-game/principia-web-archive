@@ -125,12 +125,9 @@ div.menu {
 		}
 	}
 
-	&.right a, .notifs {
+	&.right a {
 		float: right;
 		margin-right: 6px;
-	}
-	.notifs {
-		color: #20aa20;
 	}
 
 	img.search {
@@ -142,11 +139,6 @@ div.menu {
 
 .header a {
 	float: right;
-}
-
-.header_message {
-	border-bottom: 1px solid $grid;
-	padding: 15px;
 }
 
 .level-list {
@@ -333,17 +325,27 @@ div.level {
 
 // Pagination \\
 .pagination {
-	margin-top: 1em;
+	margin-top: 2em;
 	font-size: 14pt;
-	font-weight: bold;
+	text-align: center;
 
-	&:before {
-		content: "Pages: ";
+	div, a {
+		width: 120px;
+		display: inline-block;
 	}
 
-	span {
-		margin-left: 13px;
-		display: inline-block;
+	a {
+		color: white;
+		text-decoration: none;
+
+		margin: 0 15px;
+		padding: 10px;
+
+		background-color: #080808;
+
+		&:hover {
+			background-color: #111;
+		}
 	}
 }
 
@@ -385,18 +387,6 @@ div.level {
 .center	{ text-align: center; }
 .right	{ text-align: right; }
 
-.clear_right { clear: right; }
-.float-right { float: right; }
-
-.noborder { border: 0; }
-
-.text-for-ants { font-size: 8pt; }
-
-.error {
-	color: red;
-	font-weight: bold;
-}
-
 
 /// User page \\\
 .user_about {
@@ -427,17 +417,17 @@ div.level {
 	}
 
 	&.bdiamond {
-		background-image: url('/assets/icon_diamond.png');
+		background-image: url('/icons/trophy_diamond.png');
 	}
 
 	&.gold {
 		color: #e0b036;
-		background-image: url('/assets/icon_gold.png');
+		background-image: url('/icons/trophy_gold.png');
 	}
 
 	&.silver {
 		color: #949494;
-		background-image: url('/assets/icon_silver.png');
+		background-image: url('/icons/trophy_silver.png');
 	}
 
 	&.bdiamond, &.gold, &.silver {
@@ -448,29 +438,4 @@ div.level {
 .num_trophees {
 	display: block;
 	font-size: 8pt;
-}
-
-.pagination2 {
-	margin-top: 2em;
-	font-size: 14pt;
-	text-align: center;
-
-	div, a {
-		width: 120px;
-		display: inline-block;
-	}
-
-	a {
-		color: white;
-		text-decoration: none;
-
-		margin: 0 15px;
-		padding: 10px;
-
-		background-color: #080808;
-
-		&:hover {
-			background-color: #111;
-		}
-	}
 }

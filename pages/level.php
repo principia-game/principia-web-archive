@@ -1,7 +1,5 @@
 <?php
-require('lib/common.php');
-
-$lid = $_GET['id'] ?? 0;
+$lid = $path[2] ?? 0;
 
 $level = fetch("SELECT $userfields, l.* FROM levels l JOIN users u ON l.author = u.id WHERE l.id = ?", [$lid]);
 

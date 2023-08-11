@@ -1,6 +1,4 @@
 <?php
-require('lib/common.php');
-
 $query = (isset($_GET['query']) ? trim($_GET['query']) : '');
 $page = $_GET['page'] ?? 1;
 

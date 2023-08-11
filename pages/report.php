@@ -1,6 +1,4 @@
 <?php
-require('lib/common.php');
-
 if (isset($_POST['kuk'])) {
 	$text = $_POST['kuk'] ?? null;
 	$url = $_POST['helvete'] ?? null;

@@ -23,6 +23,8 @@ function twigloader($subfolder = '') {
 	return $twig;
 }
 
+
+
 function pagination($levels, $lpp, $url, $current) {
 	$twig = twigloader('components');
 
@@ -44,7 +46,7 @@ function level($level) {
 	if (!isset($level['visibility']) || $level['visibility'] != 1)
 		$img = "/thumbs/low/".$level['id']."-0-0.jpg";
 	else
-		$img = "/assets/locked_thumb.svg";
+		$img = "/locked_thumb.svg";
 
 	$author = userlink($level, 'u_');
 
@@ -61,7 +63,22 @@ function level($level) {
 HTML;
 }
 
-function redirect($url) {
-	header(sprintf('Location: %s', $url));
-	die();
+class PrincipiaExtension extends \Twig\Extension\AbstractExtension {
+	public function getFunctions() {
+		global $profiler;
+
+		return [
+			new \Twig\TwigFunction('level', 'level', ['is_safe' => ['html']]),
+			new \Twig\TwigFunction('userlink', 'userlink', ['is_safe' => ['html']]),
+			new \Twig\TwigFunction('pagination', 'pagination', ['is_safe' => ['html']]),
+			new \Twig\TwigFunction('profiler_stats', function () use ($profiler) {
+				$profiler->getStats();
+			}),
+		];
+	}
+	public function getFilters() {
+		return [
+			new \Twig\TwigFilter('cat_to_type', 'cat_to_type'),
+		];
+	}
 }

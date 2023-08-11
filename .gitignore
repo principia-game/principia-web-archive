@@ -1,20 +1,11 @@
-## User-generated files
+## User-generated files and data
 conf/config.php
-levels/
-thumbs/
 templates/cache/
+data/
 
-## SCSS caches
-assets/css/
-assets/scss/.sass-cache
+## Stylesheets
+scss/.sass-cache
+static/css/
 
-## Featured stuff
-featured/
-
-## Composer
-vendor/
-composer.lock
-tools/leveldata.json
-tools/userdata.json
-data
+## Misc.
 lib/public_levels.php
