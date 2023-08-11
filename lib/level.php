@@ -24,5 +24,5 @@ function randomLevels($amount) {
 	for ($i = 0; $i < $amount; $i++)
 		$levelIds[] = $publicLevels[array_rand($publicLevels)];
 
-	return query("SELECT $userfields l.id id, l.title title FROM levels l JOIN users u ON l.author = u.id WHERE l.id IN (".implode(",", $levelIds).")");
+	return query("SELECT $userfields,l.id,l.title FROM levels l JOIN users u ON l.author = u.id WHERE l.id IN (".implode(",", $levelIds).")");
 }

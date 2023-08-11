@@ -33,9 +33,9 @@ function userlink($user, $pre = '') {
 function userfields() {
 	$fields = ['id', 'name', 'rank', 'customcolor', 't_black', 't_gold', 't_silver'];
 
-	$out = '';
+	$out = [];
 	foreach ($fields as $field)
-		$out .= sprintf('u.%s u_%s,', $field, $field);
+		$out[] = sprintf('u.%s u_%s', $field, $field);
 
-	return $out;
+	return implode(',', $out);
 }

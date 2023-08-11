@@ -37,7 +37,8 @@ function fetchArray($query) {
 	return $out;
 }
 
-function insertId() {
-	global $sql;
-	return $sql->lastInsertId();
+function paginate($page, $pp) {
+	$page = (is_numeric($page) && $page > 0 ? $page : 1);
+
+	return sprintf(" LIMIT %s, %s", (($page - 1) * $pp), $pp);
 }

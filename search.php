@@ -2,11 +2,11 @@
 require('lib/common.php');
 
 $query = (isset($_GET['query']) ? trim($_GET['query']) : '');
-$page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
+$page = $_GET['page'] ?? 1;
 
 if ($query) {
-	$limit = sprintf("LIMIT %s,%s", (($page - 1) * $lpp), $lpp);
-	$levels = query("SELECT $userfields l.id id,l.title title FROM levels l JOIN users u ON l.author = u.id WHERE (MATCH (l.title) AGAINST (?)) AND l.visibility = 0 $limit",
+	$levels = query("SELECT $userfields,l.id,l.title FROM levels l JOIN users u ON l.author = u.id WHERE (MATCH (l.title) AGAINST (?)) AND l.visibility = 0 "
+			.paginate($page, $lpp),
 		[$query]);
 	$count = result("SELECT COUNT(*) FROM levels l WHERE (MATCH (l.title) AGAINST (?)) AND l.visibility = 0",
 		[$query]);

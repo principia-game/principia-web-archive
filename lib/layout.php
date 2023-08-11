@@ -40,27 +40,25 @@ function error($title, $message) {
 	die();
 }
 
-function level($level, $featured = '') {
+function level($level) {
 	if (!isset($level['visibility']) || $level['visibility'] != 1)
-		$img = "thumbs/low/".$level['id']."-0-0.jpg";
+		$img = "/thumbs/low/".$level['id']."-0-0.jpg";
 	else
-		$img = "assets/locked_thumb.svg";
+		$img = "/assets/locked_thumb.svg";
 
-	return twigloader('components')->render('level.twig', [
-		'level' => $level, 'featured' => $featured, 'img' => $img]);
-}
+	$author = userlink($level, 'u_');
 
-function relativeTime($time) {
-	if (!$time) return 'never';
+	$title = strlen($level['title']) > 57 ? substr($level['title'], 0, 57).'...' : $level['title'];
 
-	$relativeTime = new \RelativeTime\RelativeTime([
-		'language' => '\RelativeTime\Languages\English',
-		'separator' => ', ',
-		'suffix' => true,
-		'truncate' => 1,
-	]);
-
-	return $relativeTime->timeAgo($time);
+	return <<<HTML
+<div class="level" id="l-{$level['id']}">
+	<a class="lvlbox_top" href="/level/{$level['id']}">
+		<img src="{$img}" alt="" loading="lazy">
+		<div class="lvltitle">{$title}</div>
+	</a>
+	{$author}
+</div>
+HTML;
 }
 
 function redirect($url) {

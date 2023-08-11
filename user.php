@@ -12,13 +12,11 @@ if (!isset($userpagedata) || !$userpagedata) error('404', "No user specified.");
 
 $id = $userpagedata['id'];
 
-$page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1);
-
-$limit = sprintf("LIMIT %s,%s", (($page - 1) * $lpp), $lpp);
+$page = $_GET['page'] ?? 1;
 
 $levels = query("SELECT $userfields l.id id,l.title title
 		FROM levels l JOIN users u ON l.author = u.id
-		WHERE l.author = ? AND l.visibility = 0 ORDER BY l.id DESC $limit",
+		WHERE l.author = ? AND l.visibility = 0 ORDER BY l.id DESC ".paginate($page, $lpp),
 	[$id]);
 
 $levelcount = result("SELECT COUNT(*) FROM levels WHERE author = ? AND visibility = 0", [$id]);
