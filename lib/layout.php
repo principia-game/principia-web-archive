@@ -18,18 +18,14 @@ function twigloader($subfolder = '') {
 	$twig->addGlobal('footerlinks', $footerlinks);
 	$twig->addGlobal('domain', $domain);
 	$twig->addGlobal('uri', $uri);
-	$twig->addGlobal('pagename', substr($_SERVER['PHP_SELF'], 0, -4));
+	$twig->addGlobal('pagename', '/'.$path[1]);
 
 	return $twig;
 }
 
-
-
-function pagination($levels, $lpp, $url, $current) {
-	$twig = twigloader('components');
-
-	return $twig->render('pagination.twig', [
-		'levels' => $levels, 'lpp' => $lpp, 'url' => $url, 'current' => $current
+function pagination($levels, $pp, $url, $current) {
+	return twigloader('components')->render('pagination.twig', [
+		'levels' => $levels, 'lpp' => $pp, 'url' => $url, 'current' => $current
 	]);
 }
 
