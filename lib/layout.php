@@ -1,22 +1,21 @@
 <?php
 
-function twigloader($subfolder = '') {
-	global $tplCache, $tplNoCache, $lpp, $footerlinks, $domain, $uri;
+function twigloader() {
+	global $footerlinks, $uri, $path;
 
-	$doCache = ($tplNoCache ? false : $tplCache);
-
-	$loader = new \Twig\Loader\FilesystemLoader('templates/' . $subfolder);
+	$loader = new \Twig\Loader\FilesystemLoader('templates/');
 
 	$twig = new \Twig\Environment($loader, [
-		'cache' => $doCache,
+		'cache' => TPL_CACHE,
+		'auto_reload' => true,
 	]);
 
 	// Add principia-web specific extension
 	$twig->addExtension(new PrincipiaExtension());
 
-	$twig->addGlobal('glob_lpp', $lpp);
+	$twig->addGlobal('glob_lpp', LPP);
 	$twig->addGlobal('footerlinks', $footerlinks);
-	$twig->addGlobal('domain', $domain);
+	$twig->addGlobal('domain', DOMAIN);
 	$twig->addGlobal('uri', $uri);
 	$twig->addGlobal('pagename', '/'.$path[1]);
 
@@ -24,17 +23,18 @@ function twigloader($subfolder = '') {
 }
 
 function pagination($levels, $pp, $url, $current) {
-	return twigloader('components')->render('pagination.twig', [
+	return twigloader()->render('components/pagination.twig', [
 		'levels' => $levels, 'lpp' => $pp, 'url' => $url, 'current' => $current
 	]);
 }
 
-function error($title, $message) {
+function error($title, $message = '') {
 	if ($title >= 400 && $title < 500) http_response_code($title);
 
-	$twig = twigloader();
+	if (!$message && $title == '404')
+		$message = "The requested page was not found.";
 
-	echo $twig->render('_error.twig', ['err_title' => $title, 'err_message' => $message]);
+	twigloader()->display('_error.twig', ['err_title' => $title, 'err_message' => $message]);
 	die();
 }
 

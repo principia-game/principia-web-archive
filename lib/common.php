@@ -20,29 +20,8 @@ require_once('conf/config.php');
 require('../principia-web/vendor/autoload.php');
 foreach (glob("lib/*.php") as $file)
 	require_once($file);
+require('../principia-web/lib/cache.php');
 
 $userfields = userfields();
 
-if (php_sapi_name() != "cli") {
-	// Shorter variables for common $_SERVER values.
-	$ipaddr = $_SERVER['REMOTE_ADDR'];
-	$uri = $_SERVER['REQUEST_URI'] ?? null;
-
-	// Redirect all non-internal pages to https if https is enabled.
-	if (!isset($_SERVER['HTTPS'])) {
-		header("Location: https://".$_SERVER["HTTP_HOST"].$uri, true, 301);
-		die();
-	}
-} else {
-	// Dummy values for CLI usage
-	$ipaddr = '127.0.0.1';
-	$uri = '/';
-}
-
-$userdata = [
-	'rank' => 0,
-	'darkmode' => 1,
-	'timezone' => 'Europe/Stockholm' // I'm a self-centered egomaniac! Time itself centers around me!
-];
-
-date_default_timezone_set($userdata['timezone']);
+date_default_timezone_set('Europe/Stockholm');

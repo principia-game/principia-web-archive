@@ -11,7 +11,7 @@ $latestadvent = query(sprintf($latestquery, 2));
 
 $randomlevels = randomLevels(8);
 
-echo twigloader()->render('index.twig', [
+twigloader()->display('index.twig', [
 	'featured_levels' => $latestfeatured,
 	'top_levels' => $toplevels,
 	'custom_levels' => $latestcustom,

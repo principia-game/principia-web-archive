@@ -1,6 +1,6 @@
 <?php
 $randomlevels = randomLevels(20);
 
-echo twigloader()->render('random.twig', [
+twigloader()->display('random.twig', [
 	'levels' => $randomlevels
 ]);

@@ -1,16 +1,14 @@
 <?php
-$host = 'localhost';
-$db   = 'principia';
-$user = '';
-$pass = '';
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'principia-web-archive');
+define('DB_USER', '');
+define('DB_PASS', '');
 
-$tplCache = 'templates/cache';
-$tplNoCache = false; // **DO NOT SET AS TRUE IN PROD - DEV ONLY**
+define('TPL_CACHE', '/tmp/pwa_cache');
 
-$lpp = 20;
+define('LPP', 20);
 
-// Website domain.
-$domain = 'example.org';
+define('DOMAIN', 'example.org');
 
 $footerlinks = [
 	'https://principia-web.se/' => 'Go back'

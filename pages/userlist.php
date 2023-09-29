@@ -1,6 +1,6 @@
 <?php
 $users = query("SELECT id, name, customcolor, rank, levels FROM users");
 
-echo twigloader()->render('userlist.twig', [
+twigloader()->display('userlist.twig', [
 	'users' => $users
 ]);
