@@ -15,6 +15,11 @@ if ($path[1]) {
 		if ($path[2] == 'x.php' || $path[2] == 'xxx.php' || $path[2] == 'xxxxxx.php')
 			require('get_level.php');
 	}
+	else if ($path[1] == 'internal') {
+
+		if ($path[2] == 'get_level' || $path[2] == 'derive_level' || $path[2] == 'edit_level')
+			require('get_level.php');
+	}
 	else
 		error('404', "The requested page wasn't found.");
 } else
