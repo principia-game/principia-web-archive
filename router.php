@@ -6,20 +6,13 @@ require('lib/common.php');
 
 if ($path[1]) {
 	// If page file exists, include that one
-	if (file_exists('pages/'.$path[1].'.php')) {
+	if (file_exists('pages/'.$path[1].'.php'))
 		require('pages/'.$path[1].'.php');
-	}
+
 	// Test for internal pages
-	else if ($path[1] == 'apZodIaL1') {
+	else if ($path[1] == 'internal' && in_array($path[2], ['get_level', 'derive_level', 'edit_level']))
+		require('get_level.php');
 
-		if ($path[2] == 'x.php' || $path[2] == 'xxx.php' || $path[2] == 'xxxxxx.php')
-			require('get_level.php');
-	}
-	else if ($path[1] == 'internal') {
-
-		if ($path[2] == 'get_level' || $path[2] == 'derive_level' || $path[2] == 'edit_level')
-			require('get_level.php');
-	}
 	else
 		error('404', "The requested page wasn't found.");
 } else
