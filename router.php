@@ -4,7 +4,7 @@ $path = explode('/', $uri);
 
 require('lib/common.php');
 
-if ($path[1]) {
+if (isset($path[1]) && $path[1] != '') {
 	// If page file exists, include that one
 	if (file_exists('pages/'.$path[1].'.php'))
 		require('pages/'.$path[1].'.php');

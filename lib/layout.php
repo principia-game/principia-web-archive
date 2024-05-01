@@ -17,7 +17,7 @@ function twigloader() {
 	$twig->addGlobal('footerlinks', $footerlinks);
 	$twig->addGlobal('domain', DOMAIN);
 	$twig->addGlobal('uri', $uri);
-	$twig->addGlobal('pagename', '/'.$path[1]);
+	$twig->addGlobal('pagename', '/'.($path[1] ?? ''));
 
 	return $twig;
 }
