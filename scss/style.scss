@@ -1,6 +1,6 @@
 
 $grid: #bbb;
-$link: #1155dd;
+$link: #193fe7;
 $link_active: darken($link, 17%);
 $bg: #f0f0f0;
 $bg_box: #eee;
@@ -8,10 +8,11 @@ $bg_box2: #fff;
 $btn_play: #9ec59e;
 $btn_edit: #a3a3ca;
 $btn_text: #202020;
+$fonts: "Roboto", "Arial", sans-serif;
 
 body {
 	background-color: $bg;
-	font-family: "Roboto", "Arial", sans-serif;
+	font-family: $fonts;
 	font-size: 11.75pt;
 	margin: 0;
 
