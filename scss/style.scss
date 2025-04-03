@@ -86,7 +86,7 @@ h6 { font-size: 0.67em; }
 	text-align: center;
 	line-height: 1.5;
 	padding-top: 15px;
-	padding-bottom: 35px;
+	padding-bottom: 15px;
 	border-top: 1px solid $grid;
 }
 
@@ -198,34 +198,6 @@ div.level {
 	}
 }
 
-
-// Buttons for the Latest Levels page \\
-.latest-buttons {
-	margin-bottom: 15px;
-}
-.latest-buttons a {
-	background-color: $btn_play;
-	border: none;
-	color: $btn_text;
-	display: inline-block;
-	font-weight: bold;
-	margin-right: 0.5em;
-	padding: 10px 20px;
-
-	&:hover {
-		background-color: lighten($btn_play, 15%);
-		text-decoration: none;
-	}
-
-	&.sel {
-		background-color: $btn_edit;
-
-		&:hover {
-			background-color: lighten($btn_edit, 15%);
-		}
-	}
-}
-
 .user {
 	font-weight: bold;
 
@@ -234,6 +206,45 @@ div.level {
 	}
 
 	.t_user { color: #1155dd; }
+}
+
+.latest-buttons {
+	margin-bottom: 15px;
+}
+
+
+// Play & Edit buttons \\
+.play-btn {
+	border: none;
+	color: $btn_text;
+	display: inline-block;
+	font-weight: bold;
+	margin-right: 0.5em;
+	padding: 10px 20px;
+
+	&:hover {
+		text-decoration: none;
+	}
+
+	&:active {
+		color: $btn_text;
+	}
+
+	&.green {
+		background-color: $btn_play;
+
+		&:hover {
+			background-color: lighten($btn_play, 15%);
+		}
+	}
+
+	&.blue {
+		background-color: $btn_edit;
+
+		&:hover {
+			background-color: lighten($btn_edit, 15%);
+		}
+	}
 }
 
 .lvl-box {
@@ -268,30 +279,6 @@ div.level {
 		width: 48%;
 		padding: 1em;
 		background-color: #fafafa;
-
-		// Play & Edit buttons \\
-		.play {
-			background-color: $btn_play;
-			border: none;
-			color: $btn_text;
-			display: inline-block;
-			font-weight: bold;
-			margin-right: 0.5em;
-			padding: 10px 20px;
-
-			&:hover {
-				background-color: lighten($btn_play, 15%);
-				text-decoration: none;
-			}
-		}
-
-		.play-edit {
-			background-color: $btn_edit;
-
-			&:hover {
-				background-color: lighten($btn_edit, 15%);
-			}
-		}
 
 		.likemsg {
 			display: inline-block;

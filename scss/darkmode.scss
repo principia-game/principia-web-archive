@@ -56,27 +56,34 @@ div.level {
 	}
 }
 
-.latest-buttons a {
-	background-color: $btn_play;
-	color: $btn_text;
-
-	&:hover {
-		background-color: darken($btn_play, 10%);
-	}
-
-	&.sel {
-		background-color: $btn_edit;
-
-		&:hover {
-			background-color: darken($btn_edit, 10%);
-		}
-	}
-}
-
 .user {
 	.t_user { color: #6da0fd; }
 	.t_moderator { color: #23e123; }
 	.t_admin { color: #ff4646; }
+}
+
+.play-btn {
+	color: #eee;
+
+	&:active {
+		color: #eee;
+	}
+
+	&.green {
+		background-color: #608060;
+
+		&:hover {
+			background-color: darken(#608060, 10%);
+		}
+	}
+
+	&.blue {
+		background-color: #636383;
+
+		&:hover {
+			background-color: darken(#636383, 10%);
+		}
+	}
 }
 
 .lvl-box {

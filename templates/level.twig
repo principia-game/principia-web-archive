@@ -9,14 +9,14 @@
 <h1>{{ level.title }}</h1>
 
 <span class="misc">
-	  {{ userlink(level, 'u_') }}
-	- {{ level.cat | cat_to_type | title }} level
-	- {{ level.time | date('M j, Y') }} from {{ level.platform }}</span>
+	By {{ userlink(level, 'u_') }}
+	&ndash; {{ level.cat | cat_to_type | title }} level
+	&ndash; uploaded {{ level.time | date('j M Y') }} from {{ level.platform }}</span>
 
 <div class="lvl-box">
 	<div class="img">
 		{% if level.revision > 1 %}
-			<span class="revision">Revision #{{ level.revision }}, updated {{ level.revision_time | date('M j, Y') }}</span>
+			<span class="revision">Revision #{{ level.revision }}, updated N/A<!--{{ level.revision_time | date('M j, Y') }}--></span>
 		{% endif %}
 		{% if level.visibility == 1 %}
 			<img src="/locked_thumb.svg" alt="Locked level">
@@ -31,14 +31,12 @@
 		{% elseif level.visibility == 2 %}
 			<p><em>This level is unlisted. It will not be visible outside of this level page.</em></p>
 		{% else %}
-			<div id="buttons">
-				<a class="play" href="principia://{{ domain }}/play/lvl/db/{{ lid }}">Play</a>
-				<a class="play play-edit" href="principia://{{ domain }}/sandbox/db/{{ lid }}">Edit</a>
+			<a class="play-btn green" href="principia://{{ domain }}/play/lvl/db/{{ lid }}">Play</a>
+			<a class="play-btn blue" href="principia://{{ domain }}/sandbox/db/{{ lid }}">Edit</a>
 
-				{% if level.likes > 0 %}
-					<span class="likemsg">{{ level.likes }} players liked this.</span>
-				{% endif %}
-			</div>
+			{% if level.likes > 0 %}
+				<span class="likemsg">{{ level.likes }} player{% if level.likes != 1 %}s{% endif %} liked this.</span>
+			{% endif %}
 		{% endif %}
 		<p>{{ level.description | replace({'&gt;': '>', '&lt;': '<'}) | nl2br }}</p>
 	</div>
