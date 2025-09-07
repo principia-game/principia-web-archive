@@ -1,11 +1,2 @@
-## User-generated files and data
-conf/config.php
-templates/cache/
+## Data
 data/
-
-## Stylesheets
-scss/.sass-cache
-static/css/
-
-## Misc.
-lib/public_levels.php

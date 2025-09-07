@@ -1,5 +1,4 @@
 <?php
-require('../principia-web/lib/sitemap.php');
 
 $page = $_GET['page'] ?? 1;
 

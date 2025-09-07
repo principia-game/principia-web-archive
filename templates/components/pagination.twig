@@ -1,7 +1,7 @@
 {% set pages = (levels / lpp)|round(0, 'ceil') %}
 
 {% if pages > 1 %}
-<div class="pagination">
+<div class="pagination-archive">
 	{% if current != 1 %}
 		<a href="{{ url | format(current-1) }}">&laquo; Previous</a>
 	{% else %}

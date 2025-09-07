@@ -5,7 +5,7 @@
 	<title>{{ title }} - Principia Archive</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>@font-face{font-family:"Roboto";font-style:normal;font-weight:400;font-display:swap;src:local("Roboto"),url("/fonts/roboto-v29-latin-ext_latin-regular.woff2") format("woff2"),url("/fonts/roboto-v29-latin-ext_latin-regular.woff") format("woff")}@font-face{font-family:"Roboto";font-style:normal;font-weight:700;font-display:swap;src:local("Roboto Bold"),url("/fonts/roboto-v29-latin-ext_latin-700.woff2") format("woff2"),url("/fonts/roboto-v29-latin-ext_latin-700.woff") format("woff")}</style>
-	<link rel="stylesheet" href="/css/darkmode.css?v=32" type="text/css">
+	<link rel="stylesheet" href="/css/darkmode.css?v=52" type="text/css">
 
 	{% if noindex %}<meta name="robots" content="noindex,nofollow">{% endif %}
 	<meta property="og:title" content="{{ title }}">
@@ -17,13 +17,13 @@
 	<meta property="og:url" content="https://{{ domain }}{{ uri }}">
 	<link rel="canonical" href="https://{{ domain }}{{ pagename }}">
 
-	<link rel="icon" href="/icon-256.png" sizes="256x256">
-	<link rel="icon" href="/icon.png" sizes="64x64">
+	<link rel="icon" href="/assets/icon-256.png" sizes="256x256">
+	<link rel="icon" href="/assets/icon.png" sizes="64x64">
 </head>
 <body>
 	<div class="banner center"><a href="https://principia-web.se">&lt; Go back to principia-web</a></div>
 	<div class="top"><div class="menucontainer">
-		<a class="picon" href="/"><img src="/icon.png" alt="Home"></a>
+		<a class="picon" href="/"><img src="/assets/icon.png" alt="Home"></a>
 		<div class="menu">
 			<a href="/popular">Popular</a>
 			<a href="/top">Top</a>
@@ -36,7 +36,8 @@
 		{% block content %}{% endblock %}
 	</div></div>
 	<div class="footer">
-		{% for url, title in footerlinks %}{% if not loop.first %}&ndash;{% endif %} <a href="{{ url }}">{{ title }}</a> {% endfor %}
+		<a href="https://principia-web.se">Go back</a>
+		{% if pagename starts with '/level' or pagename starts with '/user' %}&ndash; <a href="/report?url={{ uri }}">Report</a>{% endif %}
 
 		<p></p>
 
